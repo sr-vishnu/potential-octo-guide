@@ -1,0 +1,5 @@
+.env
+scripts/provision/configs/config.py
+scripts/provision/secrets/ssh-keys/key
+scripts/provision/secrets/ssh-keys/public-key.json
+scripts/provision/secrets/credentials.json

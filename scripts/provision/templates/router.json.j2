@@ -1,0 +1,22 @@
+{
+  "name": "{{ data.router_name }}",
+  "nats": [
+    {
+      "natIpAllocateOption": "AUTO_ONLY",
+      "name": "{{ data.nat_name }}",
+      "udpIdleTimeoutSec": 30.0,
+      "icmpIdleTimeoutSec": 30.0,
+      "tcpTransitoryIdleTimeoutSec": 30.0,
+      "minPortsPerVm": 64.0,
+      "logConfig": {
+        "enable": false,
+        "filter": "ALL"
+      },
+      "tcpEstablishedIdleTimeoutSec": 1200.0,
+      "enableEndpointIndependentMapping": false,
+      "sourceSubnetworkIpRangesToNat": "ALL_SUBNETWORKS_ALL_IP_RANGES"
+    }
+  ],
+  "network": "projects/{{ data.project_name }}/global/networks/{{data.network_name}}",
+  "region": "projects/{{ data.project_name }}/regions/{{ data.zone}}"
+}

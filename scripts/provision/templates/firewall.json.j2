@@ -1,0 +1,36 @@
+{% if data.rule_name == "allow-all-internal" %}
+{
+  "name": "allow-all-internal",
+  "network": "projects/scala-environment/global/networks/{{ data.network_name }}",
+  "direction": "INGRESS",
+  "priority": 1000,
+  "allowed": [
+    {
+      "IPProtocol": "all"
+    }
+  ],
+  "sourceServiceAccounts": [
+    "{{ data.service_account }}"
+  ]
+}
+
+{% elif data.rule_name == "allow-ssh-all" %}
+
+{
+  "allowed": [
+    {
+      "IPProtocol": "tcp",
+      "ports": [
+        "22"
+      ]
+    }
+  ],
+  "direction": "INGRESS",
+  "name": "allow-ssh-all",
+  "network": "projects/scala-environment/global/networks/{{ data.network_name }}",
+  "priority": 1000.0,
+  "sourceRanges": [
+    "0.0.0.0/0"
+  ]
+}
+{% endif %}
